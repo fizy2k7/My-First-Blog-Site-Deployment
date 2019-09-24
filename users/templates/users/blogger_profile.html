@@ -1,0 +1,16 @@
+<style>
+img {
+  border-radius: 50%;
+}
+</style>
+{% extends 'Base.html' %}
+{% block content %}
+
+<div class="media">
+        <img class="rounded-circle account-img" src="{{ user1.user_profile.image.url }}" alt="Avatar" style="width:200px">
+        <div class="media-body">
+            <h2 class="account-heading">{{ user1.username}}</h2>
+            <p class="text-secondary">{{ user1.email }}</p>
+        </div>
+    </div>
+{% endblock %}

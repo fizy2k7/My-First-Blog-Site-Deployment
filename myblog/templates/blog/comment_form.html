@@ -1,0 +1,20 @@
+{% extends 'Base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="jumbotron">
+    <div class="posttitle">
+    <h2>New Comment</h2>
+    </div>
+    <hr>
+<form class="post_form" method="post">
+    {% csrf_token %}
+    <fieldset class="form-group">
+        {{ form|crispy }}
+    </fieldset>
+    <div class="col-lg-2">
+    <button type="submit" class="save btn btn-primary">Post Comment</button>
+    </div>
+</form>
+<script>var editor = new MediumEditor('.editable');</script>
+</div>
+{% endblock %}

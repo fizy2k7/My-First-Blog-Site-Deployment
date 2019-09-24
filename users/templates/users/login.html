@@ -1,0 +1,42 @@
+{% extends 'Base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!--<div class="jumbotron">-->
+<!--    <h3>Please Login:</h3>-->
+<!--    <small>(Must be a SuperUser, please check with the site admin)</small>-->
+<!--</div>-->
+
+<div class="container">
+    {% if form.error %}
+    <p>Username and password didn't match! Please try again.</p>
+    {% endif %}
+<br>
+    <form  action="" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-8">
+        <fieldset class="form-group">
+            <div class="jumbotron">
+          <legend class="border-bottom mb-4">Login</legend>
+          <small>(Must be a SuperUser, please check with the site admin)</small>
+            </div>
+            {{ form|crispy }}
+        </fieldset>
+
+        <div class="form-group">
+            <button class="btn btn-outline info" type="submit" >Login</button>
+        <small class="text-muted ml-2">
+            <a href="{% url 'password_reset' %}">Forgot Password?</a>
+            <input type="hidden" name="next" value="{{ next }}" />
+        </small>
+        </div>
+        </div>
+            </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a> </small>
+</div>
+</div>
+
+{% endblock %}
